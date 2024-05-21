@@ -4,6 +4,7 @@ CC = g++
 
 CFLAGS = -Wall -Wextra -Werror
 CFLAGS += -std=c++98
+# CFLAGS += -std=c++11
 
 SRCS	:=	megaphone.cpp \
 
@@ -23,9 +24,6 @@ fclean:clean
 	$(RM) $(NAME)
 
 re:fclean all
-
-norm:
-	norminette | grep -v "OK" || true
 
 .PHONY:
 	all clean fclean re 
