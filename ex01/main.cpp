@@ -60,28 +60,31 @@ void PhoneBook::setContact(Contact *tmp) {
   }
 }
 
-int PhoneBook::getIndex(Contact *tmp) {
-  int i = 0;
-  while (i < 8) {
-    if (tmp[i].firstName == "")
-      break;
-    i++;
-  }
-  return (i % 8);
-}
+// int PhoneBook::getIndex(Contact *tmp) {
+//   int i = 0;
+//   while (i < 8) {
+//     if (tmp[i].firstName == "")
+//       break;
+//     i++;
+//   }
+//   return (i % 8);
+// }
 
 int main() {
   std::string command;
   PhoneBook phoneBook;
   Contact contact;
-  int i = 0;
+  // int i = 0;
+  // int count = 0;
+  int count = 7;
   phoneBook.setContact(phoneBook.contacts);
   while (true) {
     std::cin >> command;
     if (command == "ADD") {
       std::cout << "ADD\n";
-      i = phoneBook.getIndex(phoneBook.contacts);
-      phoneBook.addContact(phoneBook.contacts, i);
+      // i = phoneBook.getIndex(phoneBook.contacts);
+      phoneBook.addContact(phoneBook.contacts, count % 8);
+      count++;
     }
     if (command == "SERACH")
       std::cout << "SERACH\n";
