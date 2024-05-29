@@ -1,22 +1,7 @@
 #include <iostream>
 #include <string>
 
-#define INPUT_MAX 100
-/* It has an array of contacts. */
-/* It can store a maximum of 8 contacts. If the user tries to add a 9th contact,
- */
-/* replace the oldest one by the new one. */
-/* Please note that dynamic allocation is forbidden. */
-/* /1* Stands for a phonebook contact. *1/ */
-
-class Contact {
-public:
-  std::string firstName;
-  std::string lastName;
-  std::string nickname;
-  std::string phoneNumber;
-  std::string darkestSecret;
-};
+// #define INPUT_MAX 100
 
 class PhoneBook {
 public:
@@ -30,15 +15,11 @@ public:
 
 // 空文字を入力しようとすると警告を出すようにする
 // 最大文字数
-void PhoneBook::addContact(Contact *tmp, int i) {
-  std::string tmpS;
+void PhoneBook::addContact(int i) {
+  std::string tmp;
+  std::getline();
   std::cout << "First name: ";
-  std::cin >> tmpS;
-  if (tmpS.empty())
-    std::cout << "1文字以上入力してください";
-  if (tmpS.length() == INPUT_MAX)
-    std::cout << "100文字以内で入力してください";
-  t >> tmp[i].firstName;
+  std::cin >> tmp[i].firstName;
   std::cout << "Last name: ";
   std::cin >> tmp[i].lastName;
   std::cout << "Nickname: ";
