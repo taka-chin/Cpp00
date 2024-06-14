@@ -7,15 +7,15 @@ int main() {
   std::string command;
   PhoneBook phoneBook;
   Contact contact;
-  int index;
+  int index = 0;
 
   while (true) {
     std::getline(std::cin, command);
     if (command == "ADD") {
       std::cout << "ADD\n" << std::flush;
-      index = phoneBook.getIndex();
       std::cout << index << std::endl;
       phoneBook.addContact(index % 8);
+      index++;
     }
     if (command == "SERACH")
       std::cout << "SERACH\n" << std::flush;
@@ -23,7 +23,8 @@ int main() {
       break;
     if (command == "GET") {
       std::cout << "GET\n" << std::flush;
-      // phoneBook.getContact(phoneBook.contacts);
+      std::cout << index << std::endl;
+      phoneBook.getContact(index);
     }
   }
   return (0);

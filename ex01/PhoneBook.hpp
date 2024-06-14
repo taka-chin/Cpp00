@@ -9,8 +9,9 @@ private:
 
 public:
   void addContact(int index);
+  void t_setContact(void);
   int getIndex(void);
-  // void getContact(Contact *contact);
+  void getContact(int index);
 };
 
 #endif
