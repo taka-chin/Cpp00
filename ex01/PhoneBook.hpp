@@ -8,9 +8,9 @@ private:
   Contact contacts[8];
 
 public:
-  void addContact(int i);
-  int getIndex(Contact *contact);
-  void searchContact();
+  void addContact(int index);
+  int getIndex(void);
+  // void getContact(Contact *contact);
 };
 
 #endif
