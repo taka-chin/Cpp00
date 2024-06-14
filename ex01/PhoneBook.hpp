@@ -12,6 +12,7 @@ public:
   void t_setContact(void);
   int getIndex(void);
   void getContact(int index);
+  void searchContact(int index);
 };
 
 #endif

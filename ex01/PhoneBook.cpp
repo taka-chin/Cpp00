@@ -50,7 +50,7 @@ void PhoneBook::getContact(int index) {
     std::cout << contacts[i].getDarkestSecret() << std::endl;
     i++;
   }
-}
+};
 
 int PhoneBook::getIndex(void) {
   int index;
@@ -61,6 +61,17 @@ int PhoneBook::getIndex(void) {
   }
 
   return index;
-}
+};
 
-// void PhoneBook::searchContact() {}
+void PhoneBook::searchContact(int index) {
+  int i = 0;
+  if (index > 7)
+    index = 8;
+  while (i < index) {
+    std::cout << contacts[i].getFirstName() << std::endl;
+    std::cout << contacts[i].getLastName() << std::endl;
+    std::cout << contacts[i].getNickName() << std::endl;
+    std::cout << contacts[i].getPhoneNumber() << std::endl;
+    i++;
+  }
+}
