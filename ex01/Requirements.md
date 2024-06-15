@@ -7,3 +7,7 @@
 
 # Contact　クラス
 * 電話帳の連絡先を表す
+
+String クラスで使用するもの
+std::flush
+

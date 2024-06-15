@@ -22,6 +22,7 @@ public:
   void setNickName(std::string nick_name);
   void setPhoneNumber(std::string phone_number);
   void setDarkestSecret(std::string darkest_secret);
+  void displayContact(int index);
 };
 
 #endif

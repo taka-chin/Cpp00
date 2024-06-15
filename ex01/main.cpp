@@ -17,18 +17,14 @@ int main() {
       phoneBook.addContact(index % 8);
       index++;
     }
-    if (command == "SERACH") {
-      std::cout << "SERACH\n" << std::flush;
+    if (command == "SEARCH") {
+      std::cout << "SEARCH\n" << std::flush;
+      phoneBook.getContact(index);
       std::cout << index << std::endl;
-      phoneBook.searchContact(index);
+      phoneBook.searchContact();
     }
     if (command == "EXIT")
       break;
-    if (command == "GET") {
-      std::cout << "GET\n" << std::flush;
-      std::cout << index << std::endl;
-      phoneBook.getContact(index);
-    }
   }
   return (0);
 }

@@ -12,7 +12,11 @@ public:
   void t_setContact(void);
   int getIndex(void);
   void getContact(int index);
-  void searchContact(int index);
+  void searchContact(void);
+  void displayContact(int index);
+  std::string inputCheck(int id);
+  void print_msg(int id);
+  std::string processContact(std::string buf);
 };
 
 #endif
