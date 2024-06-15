@@ -5,7 +5,7 @@
 #include <string>
 
 void PhoneBook::print_msg(int id) {
-  std::cout << " can’t have empty fields\n" << std::flush;
+  std::cout << "Don’t have empty fields\n" << std::flush;
   switch (id) {
   case 1:
     std::cout << "First name: " << std::flush;
@@ -39,23 +39,23 @@ std::string PhoneBook::inputCheck(int id) {
 void PhoneBook::addContact(int index) {
   std::string buf;
 
-  std::cout << "First name: " << std::flush;
+  print_msg(1);
   buf = inputCheck(1);
   contacts[index].setFirstName(buf);
 
-  std::cout << "Last name: " << std::flush;
+  print_msg(2);
   buf = inputCheck(2);
   contacts[index].setLastName(buf);
 
-  std::cout << "Nickname: " << std::flush;
+  print_msg(3);
   buf = inputCheck(3);
   contacts[index].setNickName(buf);
 
-  std::cout << "Phone number: " << std::flush;
+  print_msg(4);
   buf = inputCheck(4);
   contacts[index].setPhoneNumber(buf);
 
-  std::cout << "Darkest secret: " << std::flush;
+  print_msg(5);
   buf = inputCheck(5);
   contacts[index].setDarkestSecret(buf);
 };
