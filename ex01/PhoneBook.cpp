@@ -29,9 +29,12 @@ std::string PhoneBook::inputCheck(int id) {
   std::string buf;
   while (true) {
     std::getline(std::cin, buf);
-    if (!buf.empty())
+    if (std::cin.good() && !buf.empty())
       break;
-    print_msg(id);
+    else if (std::cin.eof())
+      exit(1);
+    else
+      print_msg(id);
   }
   return buf;
 }
@@ -125,8 +128,10 @@ void PhoneBook::searchContact() {
   while (true) {
     std::cout << "Please input index 0 to 7\n" << std::flush;
     std::cin >> index;
-    if (index > -1 && index < 8)
+    if (std::cin.good() && (index > -1 && index < 8))
       break;
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
   }
   displayContact(index);
 }
