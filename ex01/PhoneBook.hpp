@@ -5,7 +5,8 @@
 
 class PhoneBook {
 private:
-  Contact contacts[8];
+  static const int kContactSize = 8;
+  Contact contacts[kContactSize];
 
 public:
   void addContact(int index);
@@ -15,7 +16,7 @@ public:
   void searchContact(void);
   void displayContact(int index);
   std::string inputCheck(int id);
-  void print_msg(int id);
+  void printMsg(int id);
   std::string processContact(std::string buf);
   bool isprintString(std::string str);
   void printHeader();
