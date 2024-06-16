@@ -25,16 +25,28 @@ void PhoneBook::print_msg(int id) {
   }
 }
 
+bool PhoneBook::isprintString(std::string str) {
+  bool flag = true;
+
+  for (std::string::iterator it = str.begin(); it != str.end(); ++it) {
+    if (!std::isprint(*it)) {
+      flag = false;
+      break;
+    }
+  }
+  return (flag);
+}
+
 std::string PhoneBook::inputCheck(int id) {
   std::string buf;
   while (true) {
     std::getline(std::cin, buf);
-    if (std::cin.good() && !buf.empty())
-      break;
-    else if (std::cin.eof())
+    if (std::cin.eof())
       exit(1);
-    else
+    if (!std::cin.good() || buf.empty() || !isprintString(buf))
       print_msg(id);
+    else
+      break;
   }
   return buf;
 }
@@ -76,17 +88,13 @@ void PhoneBook::t_setContact(void) {
 };
 
 void PhoneBook::getContact(int index) {
-  int i = 0;
-  if (index > 7)
-    index = 8;
-  while (i < index) {
-    std::cout << contacts[i].getFirstName() << std::endl;
-    std::cout << contacts[i].getLastName() << std::endl;
-    std::cout << contacts[i].getNickName() << std::endl;
-    std::cout << contacts[i].getPhoneNumber() << std::endl;
-    std::cout << contacts[i].getDarkestSecret() << std::endl;
-    i++;
-  }
+  std::cout << "First name: " << contacts[index].getFirstName() << std::endl;
+  std::cout << "Last name: " << contacts[index].getLastName() << std::endl;
+  std::cout << "Nick name: " << contacts[index].getNickName() << std::endl;
+  std::cout << "Phone number: " << contacts[index].getPhoneNumber()
+            << std::endl;
+  std::cout << "Darkest sercret: " << contacts[index].getDarkestSecret()
+            << std::endl;
 };
 
 int PhoneBook::getIndex(void) {
@@ -104,23 +112,35 @@ std::string PhoneBook::processContact(std::string buf) {
     buf = buf.substr(0, 9) + ".";
   return buf;
 }
+void PhoneBook::printHeader() {
+  std::cout << "|" << std::setw(10) << "Index" << std::flush;
+  std::cout << "|" << std::setw(10) << "First name" << std::flush;
+  std::cout << "|" << std::setw(10) << "Last name" << std::flush;
+  std::cout << "|" << std::setw(10) << "Nick name" << std::flush;
+  std::cout << "|" << std::endl << std::flush;
+}
 
 void PhoneBook::displayContact(int index) {
   std::string buf;
 
-  buf = contacts[index].getFirstName();
-  buf = processContact(buf);
-  std::cout << "|" << std::setw(10) << buf << std::flush;
-  buf = contacts[index].getLastName();
-  buf = processContact(buf);
-  std::cout << "|" << std::setw(10) << buf << std::flush;
-  buf = contacts[index].getNickName();
-  buf = processContact(buf);
-  std::cout << "|" << std::setw(10) << buf << std::flush;
-  buf = contacts[index].getPhoneNumber();
-  buf = processContact(buf);
-  std::cout << "|" << std::setw(10) << buf << std::flush;
-  std::cout << "|" << std::endl << std::flush;
+  int i = 0;
+  if (index > 7)
+    index = 8;
+  printHeader();
+  while (i < index) {
+    std::cout << "|" << std::setw(10) << i << std::flush;
+    buf = contacts[i].getFirstName();
+    buf = processContact(buf);
+    std::cout << "|" << std::setw(10) << buf << std::flush;
+    buf = contacts[i].getLastName();
+    buf = processContact(buf);
+    std::cout << "|" << std::setw(10) << buf << std::flush;
+    buf = contacts[i].getNickName();
+    buf = processContact(buf);
+    std::cout << "|" << std::setw(10) << buf << std::flush;
+    std::cout << "|" << std::endl << std::flush;
+    i++;
+  }
 }
 
 void PhoneBook::searchContact() {
@@ -128,10 +148,12 @@ void PhoneBook::searchContact() {
   while (true) {
     std::cout << "Please input index 0 to 7\n" << std::flush;
     std::cin >> index;
+    if (std::cin.eof())
+      exit(1);
     if (std::cin.good() && (index > -1 && index < 8))
       break;
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
   }
-  displayContact(index);
+  getContact(index);
 }

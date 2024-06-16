@@ -11,16 +11,14 @@ int main() {
 
   while (true) {
     std::getline(std::cin, command);
+    if (std::cin.eof())
+      exit(1);
     if (command == "ADD") {
-      std::cout << "ADD\n" << std::flush;
-      // std::cout << index << std::endl;
       phoneBook.addContact(index % 8);
       index++;
     }
     if (command == "SEARCH") {
-      std::cout << "SEARCH\n" << std::flush;
-      phoneBook.getContact(index);
-      // std::cout << index << std::endl;
+      phoneBook.displayContact(index);
       phoneBook.searchContact();
     }
     if (command == "EXIT")

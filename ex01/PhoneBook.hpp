@@ -17,6 +17,8 @@ public:
   std::string inputCheck(int id);
   void print_msg(int id);
   std::string processContact(std::string buf);
+  bool isprintString(std::string str);
+  void printHeader();
 };
 
 #endif
