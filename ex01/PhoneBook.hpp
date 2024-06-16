@@ -10,7 +10,7 @@ private:
 
 public:
   void addContact(unsigned int index);
-  void t_setContact(void);
+  void testSetContact(void);
   int findIndex(void);
   void displayContactList(int index);
   void searchContact(void);

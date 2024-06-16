@@ -75,7 +75,7 @@ void PhoneBook::addContact(unsigned int index) {
   contacts[index].setDarkestSecret(buf);
 };
 
-void PhoneBook::t_setContact(void) {
+void PhoneBook::testSetContact(void) {
   int i = 0;
   while (i < 8) {
     contacts[i].setFirstName("testFisrtName");
