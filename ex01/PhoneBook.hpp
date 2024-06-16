@@ -9,12 +9,12 @@ private:
   Contact contacts[kContactSize];
 
 public:
-  void addContact(int index);
+  void addContact(unsigned int index);
   void t_setContact(void);
-  int getIndex(void);
-  void getContact(int index);
+  int findIndex(void);
+  void displayContactList(int index);
   void searchContact(void);
-  void displayContact(int index);
+  void displayContactTable(unsigned int index);
   std::string inputCheck(int id);
   void printMsg(int id);
   std::string processContact(std::string buf);

@@ -51,7 +51,7 @@ std::string PhoneBook::inputCheck(int id) {
   return buf;
 }
 
-void PhoneBook::addContact(int index) {
+void PhoneBook::addContact(unsigned int index) {
   std::string buf;
 
   printMsg(1);
@@ -87,7 +87,7 @@ void PhoneBook::t_setContact(void) {
   }
 };
 
-void PhoneBook::getContact(int index) {
+void PhoneBook::displayContactList(int index) {
   std::cout << "First name: " << contacts[index].getFirstName() << std::endl;
   std::cout << "Last name: " << contacts[index].getLastName() << std::endl;
   std::cout << "Nick name: " << contacts[index].getNickName() << std::endl;
@@ -97,7 +97,7 @@ void PhoneBook::getContact(int index) {
             << std::endl;
 };
 
-int PhoneBook::getIndex(void) {
+int PhoneBook::findIndex(void) {
   int index;
 
   index = 0;
@@ -120,10 +120,10 @@ void PhoneBook::printHeader() {
   std::cout << "|" << std::endl << std::flush;
 }
 
-void PhoneBook::displayContact(int index) {
+void PhoneBook::displayContactTable(unsigned int index) {
   std::string buf;
 
-  int i = 0;
+  unsigned int i = 0;
   if (index > 7)
     index = 8;
   printHeader();
@@ -155,5 +155,5 @@ void PhoneBook::searchContact() {
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
   }
-  getContact(index);
+  displayContactList(index);
 }

@@ -7,18 +7,18 @@ int main() {
   std::string command;
   PhoneBook phoneBook;
   Contact contact;
-  int index = 0;
+  unsigned int count = 0;
 
   while (true) {
     std::getline(std::cin, command);
     if (std::cin.eof())
       exit(1);
     if (command == "ADD") {
-      phoneBook.addContact(index % 8);
-      index++;
+      phoneBook.addContact(count % 8);
+      count++;
     }
     if (command == "SEARCH") {
-      phoneBook.displayContact(index);
+      phoneBook.displayContactTable(count);
       phoneBook.searchContact();
     }
     if (command == "EXIT")
